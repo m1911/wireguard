@@ -106,7 +106,7 @@ wg_install()
     sPUBLICkey=`cat spublickey`
     cPRIVATEkey=`cat cprivatekey`
     cPUBLICkey=`cat cpublickey`
-    serverip=$(ip addr | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, "\\1", "g", $2)}')
+    serverip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | awk -F"/" '{print $1}'`
     port=$(rand 10000 60000)
     echo $serverip:$port > /tmp/ports.txt
     echo "net.ipv4.ip_forward = 1" > /etc/sysctl.conf
