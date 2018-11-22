@@ -22,8 +22,7 @@ checkOS()
 update_kernel()
 {
     rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-	#rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
-	rpm -Uvh https://mirrors.tuna.tsinghua.edu.cn/elrepo/extras/el7/x86_64/RPMS/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+	rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 	yum -y --enablerepo=elrepo-kernel install kernel-lt kernel-lt-devel
 	grub2-set-default 0
     read -p "需要重启VPS，再次执行脚本选择安装wireguard，是否现在重启? [Y/n]:" is_reboot
